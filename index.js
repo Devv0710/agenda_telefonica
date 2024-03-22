@@ -7,6 +7,7 @@ const PORT = process.env.PORT || 3001;
 app.use(express.json());
 app.use(morgan("tiny"));
 app.use(cors());
+app.use(express.static("dist"));
 
 const generateId = () => {
   return Math.random() * 1000;
