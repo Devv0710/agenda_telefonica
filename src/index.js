@@ -15,8 +15,8 @@ app.use(cors());
 app.use(express.static("dist"));
 
 // Rutas
-app.use("/api/v1/persons", personRoute)
-app.use("/api/v1", infoRouter);
+app.use("/api/persons", personRoute)
+app.use("/info", infoRouter);
 
 
 app.listen(PORT, () => {
