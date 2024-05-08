@@ -16,10 +16,10 @@
 
 ##### Responses
 
-> | http code | content-type              | response                             |
-> | --------- | ------------------------- | ------------------------------------ |
-> | `200`     | `application/json`        | `Configuration created successfully` |
-> | `500`     | `text/html;charset=utf-8` | none                                 |
+> | http code | content-type              | response |
+> | --------- | ------------------------- | -------- |
+> | `200`     | `application/json`        | `JSON`   |
+> | `500`     | `text/html;charset=utf-8` | none     |
 
 ##### Example RestClient
 
@@ -94,7 +94,7 @@
 
 > | http code | content-type               | response                                 |
 > | --------- | -------------------------- | ---------------------------------------- |
-> | `200`     | `application/json        ` | JSON string                              |
+> | `200`     | `application/json        ` | JSON                                     |
 > | `400`     | `application/json`         | `{"code":"400","message":"Bad Request"}` |
 
 ##### Example RestClient
@@ -119,10 +119,10 @@
 
 ##### Responses
 
-> | http code | content-type               | response    |
-> | --------- | -------------------------- | ----------- |
-> | `202`     | `application/json        ` | JSON string |
-> | `404`     | `application/json`         | none        |
+> | http code | content-type               | response |
+> | --------- | -------------------------- | -------- |
+> | `202`     | `application/json        ` | JSON     |
+> | `404`     | `application/json`         | none     |
 
 ##### Example cURL
 
@@ -133,7 +133,3 @@
 </details>
 
 ---
-
-```
-
-```
