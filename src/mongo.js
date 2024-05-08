@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 // Para que funcione se debe pasar la contraseña al ejecutar el progama
-const password = process.argv[2];
-const URI = "mongodb+srv://admin:admin@cluster0.swcphwt.mongodb.net/phoneBookApp?retryWrites=true&w=majority&appName=Cluster0";
 
 mongoose.set("strictQuery", false);
 // mongoose.connect(URI);
