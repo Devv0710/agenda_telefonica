@@ -1,1 +1,1 @@
-DELETE http://localhost:3001/api/persons/3 HTTP/1.1
+DELETE https://agenda-telefonica-92xa.onrender.com/api/persons/{uuid} HTTP/1.1
