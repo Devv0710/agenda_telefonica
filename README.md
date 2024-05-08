@@ -29,8 +29,6 @@
 
 </details>
 
----
-
 <details>
  <summary><code>GET</code> <code><b>/{uuid}</b></code> <code>(get a person by id)</code></summary>
 
@@ -58,8 +56,9 @@
 
 ##### Parameters
 
-> | name | type |
-> | name | String |
+> | name   | type                 |
+> | ------ | -------------------- |
+> | name   | String               |
 > | number | String(only numbers) |
 
 ##### Responses
@@ -72,12 +71,11 @@
 ##### Example RestClient
 
 > ```javascript
-> POST http://localhost:3001/api/v1/persons HTTP/1.1
+> POST https://agenda-telefonica-92xa.onrender.com/api/persons HTTP/1.1
 > content-type: application/json
->
 > {
->    "name": "Juan",
->    "number": "123-123123"
+>   "name": "Juan",
+>  "number": "123-123123"
 > }
 > ```
 
