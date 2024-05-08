@@ -124,7 +124,7 @@
 > | `202`     | `application/json        ` | JSON     |
 > | `404`     | `application/json`         | none     |
 
-##### Example cURL
+##### Example RestClient
 
 > ```javascript
 >  DELETE https://agenda-telefonica-92xa.onrender.com/api/persons/{uuid} HTTP/1.1
