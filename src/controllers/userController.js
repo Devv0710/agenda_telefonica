@@ -68,7 +68,7 @@ function deletePerson(req, res, next) {
         .findByIdAndDelete(id)
         .then((deletedPerson) => {
             if (deletedPerson) {
-                res.status(202).end();
+                res.status(202).json(deletedPerson);
             } else {
                 res.status(404).end();
             }
