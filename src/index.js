@@ -25,11 +25,7 @@ app.listen(PORT, () => {
 
 const errorHandler = (error, req, res, next) => {
   console.log(error);
-  if (error.name === "CastError") {
-    res.status(500).end();
-  } else {
-    res.status(500).send(error);
-  }
+  res.status(500).json({ "error": `${error}` })
   next();
 };
 

@@ -1,135 +1,182 @@
-## APIRESTful
+# Documentación de la API RESTful de Agenda Telefónica
 
-- Example with Frontend: https://agenda-telefonica-92xa.onrender.com
-- APIRESTful : https://agenda-telefonica-92xa.onrender.com/api/persons
+## Base URL
 
----
+https://agenda-telefonica-92xa.onrender.com/api/persons
 
-#### Endpoints
+## Endpoints
 
-<details>
- <summary><code>GET</code> <code><b>/</b></code> <code>(get all persons)</code></summary>
+### 1. Obtener todas las personas
 
-##### Parameters
+**GET** `/`
 
-> not parameters required
+#### Request
 
-##### Responses
+- **Headers**:
+  - `Authorization: Bearer <token>`
 
-> | http code | content-type              | response |
-> | --------- | ------------------------- | -------- |
-> | `200`     | `application/json`        | `JSON`   |
-> | `500`     | `text/html;charset=utf-8` | none     |
+#### Responses
 
-##### Example RestClient
+- **200 OK**
+  ```json
+  [
+    {
+      "id": "1",
+      "name": "Juan",
+      "number": "123-123123"
+    },
+    ...
+  ]
+  ```
+- **500 Internal Server Error**
 
-> ```javascript
-> GET https://agenda-telefonica-92xa.onrender.com/api/persons HTTP/1.1
-> ```
+  ```json
+  {
+    "error": "Internal Server Error"
+  }
+  ```
 
-</details>
+### 2. Obtener una persona por ID
 
-<details>
- <summary><code>GET</code> <code><b>/{uuid}</b></code> <code>(get a person by id)</code></summary>
+**GET** `/{uuid}`
 
-##### Parameters
+#### Request
 
-> uuid
+- **Headers**:
+  - `Authorization: Bearer <token>`
 
-##### Responses
+#### Responses
 
-> | http code | content-type              | response |
-> | --------- | ------------------------- | -------- |
-> | `200`     | `application/json`        | JSON     |
-> | `404`     | `text/html;charset=utf-8` | none     |
+- **200 OK**
 
-##### Example RestClient
+  ```json
+  {
+    "id": "1",
+    "name": "Juan",
+    "number": "123-123123"
+  }
+  ```
 
-> ```javascript
-> GET https://agenda-telefonica-92xa.onrender.com/api/persons/{uuid} HTTP/1.1
-> ```
+- **404 Not Found**
 
-</details>
+  ```json
+  {
+    "error": "Person not found"
+  }
+  ```
 
-<details>
- <summary><code>POST</code> <code><b>/</b></code> <code>(create a person)</code></summary>
+### 3. Crear una nueva persona
 
-##### Parameters
+**POST** `/`
 
-> | name   | type                 |
-> | ------ | -------------------- |
-> | name   | String               |
-> | number | String(only numbers) |
+#### Request
 
-##### Responses
+- **Headers**:
 
-> | http code | content-type              | response |
-> | --------- | ------------------------- | -------- |
-> | `201`     | `application/json`        | JSON     |
-> | `400`     | `text/html;charset=utf-8` | none     |
+  - `Authorization: Bearer <token>`
+  - `Content-Type: application/json`
 
-##### Example RestClient
+- **Body**:
 
-> ```javascript
-> POST https://agenda-telefonica-92xa.onrender.com/api/persons HTTP/1.1
-> content-type: application/json
-> {
->   "name": "Juan",
->  "number": "123-123123"
-> }
-> ```
+  - `Authorization: Bearer <token>`
+  - `Content-Type: application/json`
+    ```json
+    {
+      "name": "Juan",
+      "number": "123-123123"
+    }
+    ```
 
-</details>
+#### Responses
 
-<details>
-  <summary><code>PUT</code> <code><b>/{uuid}</b></code> <code>(update a person by id)</code></summary>
+- **201 Created**
 
-##### Parameters
+  ```json
+  {
+    "id": "2",
+    "name": "Juan",
+    "number": "123-123123"
+  }
+  ```
 
-> | name   | type     | data type | description                         |
-> | ------ | -------- | --------- | ----------------------------------- |
-> | `uuid` | required | string    | The specific stub unique idendifier |
+- **400 Bad Request**
 
-##### Responses
+  ```json
+  {
+    "error": "Name and number are required"
+  }
+  ```
 
-> | http code | content-type               | response                                 |
-> | --------- | -------------------------- | ---------------------------------------- |
-> | `200`     | `application/json        ` | JSON                                     |
-> | `400`     | `application/json`         | `{"code":"400","message":"Bad Request"}` |
+### 4. Actualizar una persona
 
-##### Example RestClient
+**PUT** `/{uuid}`
 
-> ```javascript
-> PUT https://agenda-telefonica-92xa.onrender.com/api/persons/{uuid} HTTP/1.1
-> Content-Type: application/json
->
-> {
->    "number": "999-999999"
-> }
-> ```
+#### Request
 
-</details>
+- **Headers**:
 
-<details>
-  <summary><code>DELETE</code> <code><b>/{uuid}</b></code> <code>(delete a person by id)</code></summary>
+  - `Authorization: Bearer <token>`
+  - `Content-Type: application/json`
 
-##### Parameters
+- **Body**:
 
-> uuid
+  - `Authorization: Bearer <token>`
+  - `Content-Type: application/json`
+    ```json
+    {
+      "name": "Juan",
+      "number": "999-999999"
+    }
+    ```
 
-##### Responses
+#### Responses
 
-> | http code | content-type               | response |
-> | --------- | -------------------------- | -------- |
-> | `202`     | `application/json        ` | JSON     |
-> | `404`     | `application/json`         | none     |
+- **200 OK**
 
-##### Example RestClient
+  ```json
+  {
+    "id": "1",
+    "name": "Juan",
+    "number": "999-999999"
+  }
+  ```
 
-> ```javascript
->  DELETE https://agenda-telefonica-92xa.onrender.com/api/persons/{uuid} HTTP/1.1
-> ```
+- **404 Not Found**
 
-</details>
+  ```json
+  {
+    "error": "Person not found"
+  }
+  ```
 
----
+### 5. Eliminar una persona
+
+**DELETE** `/{uuid}`
+
+#### Request
+
+- **Headers**:
+
+  - `Authorization: Bearer <token>`
+
+#### Responses
+
+- **204 No Content**
+
+- **404 Not Found**
+
+  ```json
+  {
+    "error": "Person not found"
+  }
+  ```
+
+### Codigos de Estado Comunes
+
+- **200 OK**: La solicitud fue exitosa
+- **201 Created**: La solicitud fue exitos y se creo un nuevo recurso
+- **204 No Content**: La soliciut fue exiotsa pero no hay contenido que devolver
+- **400 Bad Request**: La solicitud no pudo ser procesada debido a un error del cliente.
+- **401 Unauthorized**: La solicitud requiere autenticación del usuario.
+- **404 Not Found**: El recurso solicitado no fue encontrado.
+- **500 Internal Server Error**: Ocurrió un error en el servidor.

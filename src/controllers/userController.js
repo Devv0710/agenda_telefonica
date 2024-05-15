@@ -16,7 +16,7 @@ function getPersonById(req, res, next) {
             if (person) {
                 res.status(200).json(person);
             } else {
-                res.status(404).end();
+                res.status(404).json({ error: 'Person not found' });
             }
         })
         .catch((error) => next(error));
@@ -24,7 +24,7 @@ function getPersonById(req, res, next) {
 function createPerson(req, res, next) {
     const body = req.body;
     if (!body.name || !body.number) {
-        return res.status(400).json({ error: "insert a name and a number" });
+        return res.status(400).json({ error: 'Name and number are required' });
     }
 
     const person = new Person({
@@ -47,6 +47,11 @@ function updatePerson(req, res, next) {
     const body = req.body;
     const person = { ...body };
 
+    const { number } = req.body
+    if (!number) {
+        return res.status(400).json({ error: 'Number is required' });
+    }
+
     Person
         .findByIdAndUpdate(id, person, {
             new: true,
@@ -55,9 +60,9 @@ function updatePerson(req, res, next) {
         })
         .then((newPerson) => {
             if (newPerson) {
-                res.status(201).json(newPerson);
+                res.status(200).json(newPerson);
             } else {
-                res.status(404).end();
+                res.status(404).json({ error: 'Person not found' });
             }
         })
         .catch((error) => next(error));
@@ -70,7 +75,7 @@ function deletePerson(req, res, next) {
             if (deletedPerson) {
                 res.status(202).json(deletedPerson);
             } else {
-                res.status(404).end();
+                res.status(404).json({ error: 'Person not found' });
             }
         })
         .catch((error) => next(error));
