@@ -12,9 +12,6 @@ https://agenda-telefonica-92xa.onrender.com/api/persons
 
 #### Request
 
-- **Headers**:
-  - `Authorization: Bearer <token>`
-
 #### Responses
 
 - **200 OK**
@@ -41,9 +38,6 @@ https://agenda-telefonica-92xa.onrender.com/api/persons
 **GET** `/{uuid}`
 
 #### Request
-
-- **Headers**:
-  - `Authorization: Bearer <token>`
 
 #### Responses
 
@@ -73,19 +67,16 @@ https://agenda-telefonica-92xa.onrender.com/api/persons
 
 - **Headers**:
 
-  - `Authorization: Bearer <token>`
   - `Content-Type: application/json`
 
 - **Body**:
 
-  - `Authorization: Bearer <token>`
-  - `Content-Type: application/json`
-    ```json
-    {
-      "name": "Juan",
-      "number": "123-123123"
-    }
-    ```
+  ```json
+  {
+    "name": "Juan",
+    "number": "123-123123"
+  }
+  ```
 
 #### Responses
 
@@ -115,19 +106,16 @@ https://agenda-telefonica-92xa.onrender.com/api/persons
 
 - **Headers**:
 
-  - `Authorization: Bearer <token>`
   - `Content-Type: application/json`
 
 - **Body**:
 
-  - `Authorization: Bearer <token>`
-  - `Content-Type: application/json`
-    ```json
-    {
-      "name": "Juan",
-      "number": "999-999999"
-    }
-    ```
+  ```json
+  {
+    "name": "Juan",
+    "number": "999-999999"
+  }
+  ```
 
 #### Responses
 
@@ -154,10 +142,6 @@ https://agenda-telefonica-92xa.onrender.com/api/persons
 **DELETE** `/{uuid}`
 
 #### Request
-
-- **Headers**:
-
-  - `Authorization: Bearer <token>`
 
 #### Responses
 
